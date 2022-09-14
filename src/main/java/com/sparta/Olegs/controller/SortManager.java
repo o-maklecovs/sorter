@@ -10,7 +10,7 @@ public class SortManager {
 
     public static SortManager getSortManager() { return sortManager; }
 
-    public static int[] getSorterAndSort(SorterTypes type, int[] arr) {
+    public int[] getSorterAndSort(SorterTypes type, int[] arr) {
         SorterFactory factory = new SorterFactory();
         Sort sorter = factory.getSorter(type);
         return sorter.sortArray(arr);

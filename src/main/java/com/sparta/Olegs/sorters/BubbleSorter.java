@@ -2,7 +2,6 @@ package com.sparta.Olegs.sorters;
 
 public class BubbleSorter extends Sort {
 
-    // TODO: swapping optimisation
     @Override
     public int[] sortArray(int[] arrayToSort) {
         arrayToSort = removeDuplicates(arrayToSort);
