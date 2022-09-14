@@ -27,4 +27,12 @@ class BubbleSorterTest {
         BubbleSorter bubbleSorter = new BubbleSorter();
         Assertions.assertArrayEquals(arrToCompare, bubbleSorter.sortArray(arrToSort));
     }
+
+    @Test
+    void testBubbleSorterDuplicates() {
+        int[] arrToSort = {2, 2, 4, 1, 3, 5};
+        int[] arrToCompare = {1, 2, 3, 4, 5};
+        BubbleSorter bubbleSorter = new BubbleSorter();
+        Assertions.assertArrayEquals(arrToCompare, bubbleSorter.sortArray(arrToSort));
+    }
 }

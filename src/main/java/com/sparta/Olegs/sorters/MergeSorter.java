@@ -1,8 +1,10 @@
 package com.sparta.Olegs.sorters;
 
-public class MergeSorter implements Sorter {
+public class MergeSorter extends Sort {
 
+    @Override
     public int[] sortArray(int[] arrayToSort) {
+        arrayToSort = removeDuplicates(arrayToSort);
         if (arrayToSort.length < 2)
             return arrayToSort;
         int mid = arrayToSort.length / 2;
@@ -23,16 +25,8 @@ public class MergeSorter implements Sorter {
         while (i < l.length && j < r.length) {
             if (l[i] < r[j])
                 a[k++] = l[i++];
-            else if (l[i] > r[j])
+            else
                 a[k++] = r[j++];
-            else {
-                a[k++] = l[i++];
-                j++;
-                int[] temp = a;
-                a = new int[l.length + r.length - 1];
-                for (int p = 0; p < a.length; p++)
-                    a[p] = temp[p];
-            }
         }
         while (i < l.length)
             a[k++] = l[i++];

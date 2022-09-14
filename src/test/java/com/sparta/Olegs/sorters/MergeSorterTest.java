@@ -31,8 +31,8 @@ class MergeSorterTest {
 
     @Test
     void testSortDuplicates() {
-        int[] arrToSort = {1, 2, 2, 2, 4};
-        int[] arrToCompare = {1, 2, 4};
+        int[] arrToSort = {1, 2, 3, 4, 5, 6, 6};
+        int[] arrToCompare = {1, 2, 3, 4, 5, 6};
         MergeSorter mergeSorter = new MergeSorter();
         Assertions.assertArrayEquals(arrToCompare, mergeSorter.sortArray(arrToSort));
     }

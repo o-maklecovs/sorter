@@ -1,7 +1,7 @@
 package com.sparta;
 
-public class Main {
-    public static void main(String[] args) {
+import com.sparta.Olegs.sorters.MergeSorter;
 
-    }
+public class Main {
+    public static void main(String[] args) { }
 }
