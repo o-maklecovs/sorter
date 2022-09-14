@@ -1,7 +1,5 @@
 package com.sparta.Olegs.controller;
 
-import com.sparta.Olegs.sorters.BubbleSorter;
-import com.sparta.Olegs.sorters.MergeSorter;
 import com.sparta.Olegs.sorters.Sort;
 
 public class SortManager {
@@ -12,11 +10,9 @@ public class SortManager {
 
     public static SortManager getSortManager() { return sortManager; }
 
-    public Sort getSorter(SorterTypes type) {
-        return switch (type) {
-            case BUBBLE -> new BubbleSorter();
-            case MERGE -> new MergeSorter();
-            default -> null;
-        };
+    public static int[] getSorterAndSort(SorterTypes type, int[] arr) {
+        SorterFactory factory = new SorterFactory();
+        Sort sorter = factory.getSorter(type);
+        return sorter.sortArray(arr);
     }
 }
