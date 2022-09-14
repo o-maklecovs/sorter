@@ -1,10 +1,7 @@
 package com.sparta.Olegs.view;
 
 import com.sparta.Olegs.controller.SortManager;
-import com.sparta.Olegs.controller.SorterTypes;
-import com.sparta.Olegs.utils.RandArrayBuilder;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DisplayManager {
@@ -25,20 +22,14 @@ public class DisplayManager {
             System.out.println("2. Merge sort");
             System.out.println("3. Binary tree sort");
             try {
-                int algo = sc.nextInt();
-                if (algo < 1 || algo > 3) throw new Exception(); // not working
+                int type = sc.nextInt();
+                if (type < 1 || type > 3) throw new Exception(); // not working
                 System.out.println();
                 System.out.println("Enter array size: ");
                 int size = sc.nextInt();
                 if (size < 1) throw new Exception(); // not working
-                RandArrayBuilder arrBuilder = new RandArrayBuilder();
-                int[] arr = arrBuilder.build(size);
                 System.out.println();
-                switch (algo) {
-                    case 1 -> print(SortManager.getSortManager().getSorterAndSort(SorterTypes.BUBBLE, arr));
-                    case 2 -> print(SortManager.getSortManager().getSorterAndSort(SorterTypes.MERGE, arr));
-                    case 3 -> print(SortManager.getSortManager().getSorterAndSort(SorterTypes.BINARY, arr));
-                }
+                this.print(SortManager.getSortManager().getSorterAndSort(type, size));
                 break;
             } catch (Exception e) {
                 sc.next();
