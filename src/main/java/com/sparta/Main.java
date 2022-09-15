@@ -1,9 +1,9 @@
 package com.sparta;
 
-import com.sparta.Olegs.view.DisplayManager;
+import com.sparta.Olegs.controller.SortManager;
 
 public class Main {
     public static void main(String[] args) {
-        DisplayManager.getDisplayManager().run();
+        SortManager.getSortManager().run();
     }
 }
