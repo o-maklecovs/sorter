@@ -19,10 +19,10 @@ public class DisplayManager {
     public static DisplayManager getDisplayManager() { return displayManager; }
 
     public void run() {
-        System.out.println("==== SORT MANAGER ====");
-        System.out.println();
-
         while (true) {
+            System.out.println("==== SORT MANAGER ====");
+            System.out.println();
+
             System.out.println("Choose a sorting algorithm:");
             System.out.println("1. Bubble sort");
             System.out.println("2. Merge sort");
@@ -87,8 +87,6 @@ public class DisplayManager {
                 break;
             } catch (Exception e) {
                 logger.error(e.getMessage(), e);
-                System.out.println();
-                System.out.println("Invalid input type");
                 System.out.println();
             }
         }
