@@ -21,41 +21,67 @@ public class DisplayManager {
     public void run() {
         System.out.println("==== SORT MANAGER ====");
         System.out.println();
+
         while (true) {
             System.out.println("Choose a sorting algorithm:");
             System.out.println("1. Bubble sort");
             System.out.println("2. Merge sort");
             System.out.println("3. Binary tree sort");
+
             try {
                 Scanner sc = new Scanner(System.in);
+
                 int type = sc.nextInt();
                 if (type < 1 || type > 3) throw new Exception("Invalid input range");
                 System.out.println();
+
                 System.out.println("Enter array size: ");
                 int size = sc.nextInt();
                 if (size < 1) throw new Exception("Invalid input range");
                 System.out.println();
+
                 RandArrayBuilder builder = new RandArrayBuilder();
                 int[] arr = builder.build(size);
+                System.out.println("Original:");
                 this.print(arr);
                 System.out.println();
+
+                long startFirst = System.nanoTime();
                 this.handleSorterChoice(type, arr);
+                long timeFirst = (System.nanoTime() - startFirst) / 1000000;
+
                 System.out.println();
-                // print first time
+                System.out.println("Execution time: " + timeFirst + " ms");
                 System.out.println();
+
                 System.out.println("Do you want to compare to another algorithm? (y/n)");
-                String answer = sc.nextLine();
+                String answer = sc.next();
+
                 if (answer.equalsIgnoreCase("y")) {
                     System.out.println("Choose a sorting algorithm:");
                     if (type != 1) System.out.println("1. Bubble sort");
                     if (type != 2) System.out.println("2. Merge sort");
                     if (type != 3) System.out.println("3. Binary tree sort");
+
                     int typeToCompare = sc.nextInt();
-                    if (typeToCompare < 1 || typeToCompare > 3) throw new Exception("Invalid input range");
+                    if (typeToCompare < 1 || typeToCompare > 3 || typeToCompare == type) throw new Exception("Invalid input range");
                     System.out.println();
+
+                    System.out.println("Original:");
+                    this.print(arr);
+                    System.out.println();
+
+                    long startSecond = System.nanoTime();
                     this.handleSorterChoice(typeToCompare, arr);
+                    long timeSecond = (System.nanoTime() - startSecond) / 1000000;
+
                     System.out.println();
-                    // print first and second time
+                    System.out.println("Execution time: " + timeSecond + " ms");
+
+                    if (timeFirst > timeSecond)
+                        System.out.println("Difference: " + (timeFirst - timeSecond) + " ms");
+                    else
+                        System.out.println("Difference: " + (timeSecond - timeFirst) + " ms");
                 } else if (answer.equalsIgnoreCase("n")) break;
                 else throw new Exception("Invalid input range");
                 break;
@@ -77,23 +103,21 @@ public class DisplayManager {
             else
                 System.out.print(a[i] + ", ");
         }
+        System.out.println();
     }
 
     public void handleSorterChoice(int type, int[] arr) {
         switch (type) {
             case 1 -> {
-                System.out.println("Sorting with Bubble sort...");
-                System.out.println();
+                System.out.println("Sorted with Bubble sort:");
                 this.print(SortManager.getSortManager().getSorterAndSort(SorterTypes.BUBBLE, arr));
             }
             case 2 -> {
-                System.out.println("Sorting with Merge sort...");
-                System.out.println();
+                System.out.println("Sorted with Merge sort:");
                 this.print(SortManager.getSortManager().getSorterAndSort(SorterTypes.MERGE, arr));
             }
             case 3 -> {
-                System.out.println("Sorting with Binary Tree sort...");
-                System.out.println();
+                System.out.println("Sorted with Binary Tree sort:");
                 this.print(SortManager.getSortManager().getSorterAndSort(SorterTypes.BINARY, arr));
             }
         }

@@ -1,5 +1,6 @@
 package com.sparta.Olegs.sorters;
 
+import java.util.List;
 import java.util.ArrayList;
 
 public class BinaryTreeSorter extends Sort {
@@ -18,7 +19,7 @@ public class BinaryTreeSorter extends Sort {
         }
     }
 
-    public void inOrder(Node node, ArrayList<Integer> vals) {
+    public void inOrder(Node node, List<Integer> vals) {
         if (node != null) {
             this.inOrder(node.getL(), vals);
             vals.add(node.getData());
@@ -34,7 +35,7 @@ public class BinaryTreeSorter extends Sort {
         for (int i = 1; i < arrayToSort.length; i++) {
             this.add(newNode, arrayToSort[i]);
         }
-        ArrayList<Integer> vals = new ArrayList<>();
+        List<Integer> vals = new ArrayList<>();
         inOrder(newNode, vals);
         int[] result = new int[vals.size()];
         for (int i = 0; i < result.length; i++)
